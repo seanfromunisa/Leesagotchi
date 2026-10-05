@@ -9,6 +9,7 @@
 size = Vector2(1.0014716, 0.99999726)
 
 [node name="MergeItem" type="StaticBody2D" unique_id=1440225629]
+input_pickable = true
 script = ExtResource("1_yf70l")
 
 [node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1131947625]

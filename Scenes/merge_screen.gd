@@ -1,13 +1,16 @@
 extends Node2D
 
 # Array of all on-screen MergeItem objects
-@export var mergeArray: Array[MergeItem] = [$mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1]
+@onready var mergeArray: Array[MergeItem] = [get_node("mergeItem1"), get_node("mergeItem2"), get_node("mergeItem3"), get_node("mergeItem4"), get_node("mergeItem5"), get_node("mergeItem6"), get_node("mergeItem7"), get_node("mergeItem8"), get_node("mergeItem9"), get_node("mergeItem10"), get_node("mergeItem11"), get_node("mergeItem12")]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	# Connect to MergeItem signal for changing one of the two merged items
-	connect("item_change", changeHighlighted)
+	# Connect to MergeItems signals
+	for item in mergeArray:
+		item.connect("merge_success", mergeSuccess)
+		item.connect("merge_failure", mergeFailure)
+		item.connect("merge_collect", mergeCollect.bind(item))
 	
 	# Fills array of MergeItems, converting from BlankItems (need to add state loading)
 	for arrayItem: MergeItem in mergeArray:
@@ -31,11 +34,32 @@ func changeArrayItem(item: MergeItem):
 			
 			# Other items must also not check against the given item
 			pairFound = checkOtherPairInArray(mergeArray[index], item)
-			index += 1
+			
+			# TESTING
+			if (pairFound == true):
+				print("merge possible")
 		
-	# Will change current MergeItem, ensuring a pair already exists or will now exist
-	while (pairFound == false):
-		pairFound = checkPairInArray(item.randItem())
+		# Index integer increases
+		index += 1
+		
+	# Will change current MergeItem, ensuring a pair already exists or will now exist, running at least once
+	var firstRun = false
+	while (firstRun == false || pairFound == false):
+		item.randItem()
+		
+		# Only if pair is found, update pairFound to true, regardless of if it already was
+		if (checkPairInArray(item)):
+			pairFound = true
+		
+		# TESTING
+		print("did change: " + item.itemName)
+		
+		# After running at least once, if a pair is found/already found, continue. otherwise, repeat
+		firstRun = true
+	
+	# TESTING
+	if (index == 12):
+		print("merge made possible")
 	
 # Checks if any array items match the given item
 func checkPairInArray(item: MergeItem):
@@ -54,10 +78,26 @@ func checkOtherPairInArray(item: MergeItem, excluded: MergeItem):
 		if (item.itemName == arrayItem.itemName && arrayItem != item && arrayItem != excluded):
 			return true
 	return false
-
-# On signal, change the highlighted item, as that will always be the one to be randomly reassigned
-func changeHighlighted():
+	
+# Visible acknowledgement for successful merge, before changing globally highlighted item
+func mergeSuccess():
+	# TESTING
 	changeArrayItem(system_global.globalHighlight)
+	print("merge success!!")
+
+# Visible acknowledgement for failed merge	
+func mergeFailure():
+	# TESTING
+	print("merge failed...")
+	
+# Visible acknowledgement for successful collection, and added food value
+func mergeCollect(item: MergeItem):
+	# TESTING
+	print("collected " + item.itemName + "!")
+	print("merge collect! +3")
+	
+	# Change the successfully collected item
+	changeArrayItem(item)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

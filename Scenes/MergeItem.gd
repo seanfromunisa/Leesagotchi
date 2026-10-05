@@ -8,9 +8,6 @@ var itemName: String = "BlankItem"
 var highlighted: bool = false
 var levelThree: bool = false
 
-# Signal for merge screen to change the other merged item
-signal item_change
-
 # Signals for merge successes, failures and collection
 signal merge_success
 signal merge_failure
@@ -62,46 +59,54 @@ func merged():
 	
 # Flips value of highlight sprite visibility and highlight boolean
 func toggleHighlight():
-	$Sprite2D.visible = not $Sprite2D.visible
-	highlighted = not highlighted
+	
+	# If no item is highlighted, highlight self
+	if (system_global.globalHighlight == null):
+		system_global.globalHighlight = self
+		highlighted = true
+		$Sprite2D.visible = true
+		
+	# If any item, including self, is highlighted, unhighlight
+	else:
+		system_global.globalHighlight.highlighted = false
+		system_global.globalHighlight.get_node("Sprite2D").visible = false
+		system_global.globalHighlight = null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
+	# TESTING
+	pass
 	# If item is not blank, therefore has a valid name, have its texture visible and current
-	if itemName != "BlankItem":
-			$Sprite2D3.texture = load("res://Illustrations/" + itemName + ".png")
+	#if itemName != "BlankItem":
+			#$Sprite2D3.texture = load("res://Illustrations/" + itemName + ".png")
 
 # On-click event to select items and check for merges 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if (event is InputEventMouseButton and event.pressed):
 		if (event.button_index == MOUSE_BUTTON_LEFT):
 			
+			# TESTING
+			print(itemName)
+			
 			# If the globally selected item is a different item, check that they are a match
 			if (system_global.globalHighlight != null && system_global.globalHighlight != self):
 				if (self.itemName == system_global.globalHighlight.itemName):
 					self.merged()
-					item_change.emit()
 					merge_success.emit()
 				
-				# If not a match, unhighlight the currently highlighted object
+				# If not a match, show failure
 				else:
-					system_global.globalHighlight.highlighted = false
-					system_global.globalHighlight = null
 					merge_failure.emit()
-					
+				
+				# Unhighlight currently highlighted item regardless
+				toggleHighlight()
+				
 			# If item is level 3, change the item and collect the reward
 			elif (levelThree):
 				
 				# Change item to global highlight to be changed, and then remove
-				system_global.globalHighlight = self
 				merge_collect.emit()
-				system_global.globalHighlight = null
 				
 			# Clicking self below level 3 will toggle whether the item is highlighted
 			else:
-				if (self.highlighted):
-					system_global.globalHighlight = null
-				else:
-					system_global.globalHighlight = self
 				toggleHighlight()

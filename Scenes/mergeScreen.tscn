@@ -5,9 +5,8 @@
 [ext_resource type="Script" uid="uid://dgw1bjnanr2ly" path="res://Scenes/merge_screen.gd" id="2_hyff1"]
 [ext_resource type="PackedScene" uid="uid://c7wa4uil3ktus" path="res://Scenes/MergeItem.tscn" id="4_hyff1"]
 
-[node name="Node2D" unique_id=54053220 node_paths=PackedStringArray("mergeArray") instance=ExtResource("1_oftjy")]
+[node name="Node2D" unique_id=54053220 instance=ExtResource("1_oftjy")]
 script = ExtResource("2_hyff1")
-mergeArray = []
 
 [node name="Sprite2D2" type="Sprite2D" parent="." index="1" unique_id=1990211574]
 position = Vector2(200.00006, 299.99997)
