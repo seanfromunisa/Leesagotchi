@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d14232lrfoqmx"]
+
+[ext_resource type="PackedScene" uid="uid://ds515o5j2r34a" path="res://Scenes/main.tscn" id="1_22v0y"]
+[ext_resource type="Script" uid="uid://bu3vxblt6jdwm" path="res://Scenes/tamagotchi_screen.gd" id="2_7xd0r"]
+[ext_resource type="Texture2D" uid="uid://khct334as834" path="res://Illustrations/sootScreen.png" id="3_0e8p2"]
+
+[node name="Node2D" unique_id=54053220 instance=ExtResource("1_22v0y")]
+script = ExtResource("2_7xd0r")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="1" unique_id=2006384785]
+position = Vector2(201.00003, 300.99997)
+scale = Vector2(0.19999997, 0.20000002)
+texture = ExtResource("3_0e8p2")

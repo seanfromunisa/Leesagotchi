@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dwik5ixw7ita3"]
+
+[ext_resource type="PackedScene" uid="uid://ds515o5j2r34a" path="res://Scenes/main.tscn" id="1_oftjy"]
+[ext_resource type="Texture2D" uid="uid://c2ii8yxh4a6vk" path="res://Illustrations/mergeScreen.png" id="2_400fq"]
+[ext_resource type="Script" uid="uid://dgw1bjnanr2ly" path="res://Scenes/merge_screen.gd" id="2_hyff1"]
+[ext_resource type="PackedScene" uid="uid://c7wa4uil3ktus" path="res://Scenes/MergeItem.tscn" id="4_hyff1"]
+
+[node name="Node2D" unique_id=54053220 node_paths=PackedStringArray("mergeArray") instance=ExtResource("1_oftjy")]
+script = ExtResource("2_hyff1")
+mergeArray = []
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="1" unique_id=1990211574]
+position = Vector2(200.00006, 299.99997)
+scale = Vector2(0.19999993, 0.2)
+texture = ExtResource("2_400fq")
+
+[node name="mergeItem1" parent="." index="3" unique_id=1440225629 instance=ExtResource("4_hyff1")]
+position = Vector2(104, 132)
+
+[node name="mergeItem2" parent="." index="4" unique_id=982549066 instance=ExtResource("4_hyff1")]
+position = Vector2(203, 132)
+
+[node name="mergeItem3" parent="." index="5" unique_id=2128313134 instance=ExtResource("4_hyff1")]
+position = Vector2(302, 132)
+
+[node name="mergeItem4" parent="." index="6" unique_id=889610262 instance=ExtResource("4_hyff1")]
+position = Vector2(104, 224)
+
+[node name="mergeItem5" parent="." index="7" unique_id=1504094108 instance=ExtResource("4_hyff1")]
+position = Vector2(203, 224)
+
+[node name="mergeItem6" parent="." index="8" unique_id=1842625694 instance=ExtResource("4_hyff1")]
+position = Vector2(302, 224)
+
+[node name="mergeItem7" parent="." index="9" unique_id=2077384878 instance=ExtResource("4_hyff1")]
+position = Vector2(104, 320)
+
+[node name="mergeItem8" parent="." index="10" unique_id=1429876144 instance=ExtResource("4_hyff1")]
+position = Vector2(203, 320)
+
+[node name="mergeItem9" parent="." index="11" unique_id=1253556108 instance=ExtResource("4_hyff1")]
+position = Vector2(302, 320)
+
+[node name="mergeItem10" parent="." index="12" unique_id=1688263278 instance=ExtResource("4_hyff1")]
+position = Vector2(104, 416)
+
+[node name="mergeItem11" parent="." index="13" unique_id=482106895 instance=ExtResource("4_hyff1")]
+position = Vector2(203, 416)
+
+[node name="mergeItem12" parent="." index="14" unique_id=1754888592 instance=ExtResource("4_hyff1")]
+position = Vector2(302, 416)

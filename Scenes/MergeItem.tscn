@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c7wa4uil3ktus"]
+
+[ext_resource type="Script" uid="uid://f8i4nfon71k4" path="res://Scenes/MergeItem.gd" id="1_yf70l"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c0rpx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ptul"]
+size = Vector2(1.0014716, 0.99999726)
+
+[node name="MergeItem" type="StaticBody2D" unique_id=1440225629]
+script = ExtResource("1_yf70l")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1131947625]
+position = Vector2(0, 9.094947e-13)
+scale = Vector2(84.99999, 80)
+texture = SubResource("PlaceholderTexture2D_c0rpx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1087985099]
+position = Vector2(0, 3.8146973e-06)
+scale = Vector2(84.99999, 79.999985)
+shape = SubResource("RectangleShape2D_8ptul")
