@@ -103,8 +103,6 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 				
 			# If item is level 3, change the item and collect the reward
 			elif (levelThree):
-				
-				# Change item to global highlight to be changed, and then remove
 				merge_collect.emit()
 				
 			# Clicking self below level 3 will toggle whether the item is highlighted

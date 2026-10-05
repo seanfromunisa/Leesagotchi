@@ -96,7 +96,10 @@ func mergeCollect(item: MergeItem):
 	print("collected " + item.itemName + "!")
 	print("merge collect! +3")
 	
-	# Change the successfully collected item
+	# Collect food and change the successfully collected item
+	system_global.food += 3
+	if (system_global.food > 99999):
+		system_global.food = 99999
 	changeArrayItem(item)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
