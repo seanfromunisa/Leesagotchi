@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c7wa4uil3ktus"]
 
 [ext_resource type="Script" uid="uid://f8i4nfon71k4" path="res://Scenes/MergeItem.gd" id="1_yf70l"]
+[ext_resource type="Texture2D" uid="uid://dylm2q0554031" path="res://Illustrations/merge/highlight.png" id="2_kflnw"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c0rpx"]
 
@@ -15,7 +16,14 @@ position = Vector2(0, 9.094947e-13)
 scale = Vector2(84.99999, 80)
 texture = SubResource("PlaceholderTexture2D_c0rpx")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=856811895]
+position = Vector2(-1.1444092e-05, 3.0994415e-06)
+scale = Vector2(0.19753085, 0.19753088)
+texture = ExtResource("2_kflnw")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1087985099]
 position = Vector2(0, 3.8146973e-06)
 scale = Vector2(84.99999, 79.999985)
 shape = SubResource("RectangleShape2D_8ptul")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

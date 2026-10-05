@@ -1,8 +1,13 @@
 extends Node2D
+
+# Array of all on-screen MergeItem objects
 @export var mergeArray: Array[MergeItem] = [$mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1, $mergeItem1]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	# Connect to MergeItem signal for changing one of the two merged items
+	connect("item_change", changeHighlighted)
 	
 	# Fills array of MergeItems, converting from BlankItems (need to add state loading)
 	for arrayItem: MergeItem in mergeArray:
@@ -10,6 +15,9 @@ func _ready() -> void:
 
 # Changes given MergeItem in array to a level 1/2 item
 func changeArrayItem(item: MergeItem):
+	
+	# As a level 1/2 item, the LevelThree boolean is false
+	item.levelThree = false
 	
 	# Checks if a pair not including itself exists in the array
 	var pairFound: bool = false
@@ -46,6 +54,10 @@ func checkOtherPairInArray(item: MergeItem, excluded: MergeItem):
 		if (item.itemName == arrayItem.itemName && arrayItem != item && arrayItem != excluded):
 			return true
 	return false
+
+# On signal, change the highlighted item, as that will always be the one to be randomly reassigned
+func changeHighlighted():
+	changeArrayItem(system_global.globalHighlight)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
