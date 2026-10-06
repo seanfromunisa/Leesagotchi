@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://c7wa4uil3ktus"]
 
 [ext_resource type="Script" uid="uid://f8i4nfon71k4" path="res://Scenes/MergeItem.gd" id="1_yf70l"]
+[ext_resource type="Texture2D" uid="uid://brh6bduwtayv1" path="res://Illustrations/merge/Carrot.png" id="2_4sp0s"]
 [ext_resource type="Texture2D" uid="uid://dylm2q0554031" path="res://Illustrations/merge/highlight.png" id="2_kflnw"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c0rpx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ptul"]
 size = Vector2(1.0014716, 0.99999726)
@@ -14,8 +13,8 @@ script = ExtResource("1_yf70l")
 
 [node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1131947625]
 position = Vector2(0, 9.094947e-13)
-scale = Vector2(84.99999, 80)
-texture = SubResource("PlaceholderTexture2D_c0rpx")
+scale = Vector2(0.2, 0.188)
+texture = ExtResource("2_4sp0s")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=856811895]
 position = Vector2(-1.1444092e-05, 3.0994415e-06)
@@ -26,5 +25,7 @@ texture = ExtResource("2_kflnw")
 position = Vector2(0, 3.8146973e-06)
 scale = Vector2(84.99999, 79.999985)
 shape = SubResource("RectangleShape2D_8ptul")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1075343738]
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

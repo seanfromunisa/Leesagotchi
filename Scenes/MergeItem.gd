@@ -3,6 +3,8 @@ class_name MergeItem extends StaticBody2D
 # List of all level 1 and 2 item names
 var randItemList: Array[String] = ["Mango", "HJOrangeAndMango", "Controller", "Kart", "Chicken", "Hoverboard", "StumpySpark", "CarrySpark", "WhiteCapMushroom", "SkyrimDragon", "Carrot", "Leaves", "F1Tyre", "F1Helmet", "Paperclip", "FountainPen"]
 
+@onready var celebrateAnimation: AnimatedSprite2D = $AnimatedSprite2D
+
 # Each item starts as blank
 var itemName: String = "BlankItem"
 var highlighted: bool = false
@@ -74,12 +76,13 @@ func toggleHighlight():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# TESTING
-	pass
+	
 	# If item is not blank, therefore has a valid name, have its texture visible and current
-	#if itemName != "BlankItem":
-			#$Sprite2D3.texture = load("res://Illustrations/" + itemName + ".png")
-
+	if itemName != "BlankItem":
+		$Sprite2D3.texture = load("res://Illustrations/merge/" + itemName + ".png")
+	else:
+		$Sprite2D3.texture = load("res://Illustrations/merge/PickleRick.png")
+	
 # On-click event to select items and check for merges 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if (event is InputEventMouseButton and event.pressed):
@@ -93,6 +96,12 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 				if (self.itemName == system_global.globalHighlight.itemName):
 					self.merged()
 					merge_success.emit()
+					
+					# Play celebration animation
+					celebrateAnimation.play("stars")
+					await get_tree().create_timer(2)
+					celebrateAnimation.play("none")
+					
 				
 				# If not a match, show failure
 				else:

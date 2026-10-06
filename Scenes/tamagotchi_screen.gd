@@ -1,13 +1,16 @@
-extends Node2D
-
+extends "res://Scenes/main.gd"
+var pettingSoot: bool = false
+var timePettingSoot: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	super()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	# Update the emoji sprite based on happiness
 	if (system_global.happiness <= 20):
 		$Emoji.texture = load("res://Illustrations/emojiDead.png")
 	elif (system_global.happiness > 20 && system_global.happiness <= 40):
@@ -18,3 +21,7 @@ func _process(delta: float) -> void:
 		$Emoji.texture = load("res://Illustrations/emojiSmirk.png")
 	else:
 		$Emoji.texture = load("res://Illustrations/emojiHappy.png")
+
+
+func _on_soot_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	pass # Replace with function body.

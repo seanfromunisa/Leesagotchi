@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Leesagotchi"
-run/main_scene="uid://ds515o5j2r34a"
+run/main_scene="uid://dotc5c1n2x3dl"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

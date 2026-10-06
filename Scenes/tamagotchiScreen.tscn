@@ -3,8 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ds515o5j2r34a" path="res://Scenes/main.tscn" id="1_22v0y"]
 [ext_resource type="Script" uid="uid://bu3vxblt6jdwm" path="res://Scenes/tamagotchi_screen.gd" id="2_7xd0r"]
 [ext_resource type="Texture2D" uid="uid://khct334as834" path="res://Illustrations/sootScreen.png" id="3_0e8p2"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_22v0y"]
+[ext_resource type="Texture2D" uid="uid://nusd607rvvyq" path="res://Illustrations/emojiHappy.png" id="4_7xd0r"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7xd0r"]
 
@@ -20,11 +19,11 @@ scale = Vector2(0.2, 0.19999999)
 texture = ExtResource("3_0e8p2")
 
 [node name="Emoji" type="Sprite2D" parent="." index="2" unique_id=202541201]
-position = Vector2(67, 102)
-scale = Vector2(41.000008, 41.000004)
-texture = SubResource("PlaceholderTexture2D_22v0y")
+position = Vector2(200.00002, 300)
+scale = Vector2(0.20000002, 0.20000002)
+texture = ExtResource("4_7xd0r")
 
-[node name="Soot" type="StaticBody2D" parent="." index="4" unique_id=1625388378]
+[node name="Soot" type="StaticBody2D" parent="." index="3" unique_id=1625388378]
 input_pickable = true
 
 [node name="SootSprite" type="Sprite2D" parent="Soot" index="0" unique_id=1695670500]
@@ -35,3 +34,5 @@ texture = SubResource("PlaceholderTexture2D_7xd0r")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Soot" index="1" unique_id=541334183]
 position = Vector2(199.5, 313)
 shape = SubResource("RectangleShape2D_0e8p2")
+
+[connection signal="input_event" from="Soot" to="." method="_on_soot_input_event"]

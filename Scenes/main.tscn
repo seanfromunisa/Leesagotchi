@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://d1vy27efrjqb1" path="res://Scenes/main.gd" id="1_8gbba"]
 [ext_resource type="Texture2D" uid="uid://bnlwvbvhgcofy" path="res://Illustrations/frame.png" id="1_jjgbg"]
+[ext_resource type="Texture2D" uid="uid://b8345ebjdy6wp" path="res://Illustrations/lostFocus.png" id="2_8gbba"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bo1nx"]
+radius = 32.649654
 
 [node name="Node2D" type="Node2D" unique_id=54053220]
 script = ExtResource("1_8gbba")
@@ -9,7 +13,38 @@ script = ExtResource("1_8gbba")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=602536973]
 position = Vector2(200, 300)
 
+[node name="lostFocusFilter" type="Sprite2D" parent="." unique_id=105977253]
+position = Vector2(200, 300)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_8gbba")
+
 [node name="Frame" type="Sprite2D" parent="." unique_id=35142667]
 position = Vector2(200, 299.99997)
 scale = Vector2(0.19999999, 0.20000002)
 texture = ExtResource("1_jjgbg")
+
+[node name="Tick" type="Timer" parent="." unique_id=1352441412]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2127357297]
+position = Vector2(200, 538)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=694110276]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_bo1nx")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=735538856]
+position = Vector2(302, 538)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1804609808]
+shape = SubResource("CircleShape2D_bo1nx")
+
+[node name="Area2D3" type="Area2D" parent="." unique_id=461878932]
+position = Vector2(98, 538)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3" unique_id=1861333839]
+shape = SubResource("CircleShape2D_bo1nx")
+
+[connection signal="timeout" from="Tick" to="." method="_on_timer_timeout"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Area2D2" to="." method="_on_area_2d_2_input_event"]
+[connection signal="input_event" from="Area2D3" to="." method="_on_area_2d_3_input_event"]

@@ -1,10 +1,11 @@
-extends Node2D
+extends "res://Scenes/main.gd"
 
 # Array of all on-screen MergeItem objects
-@onready var mergeArray: Array[MergeItem] = [get_node("mergeItem1"), get_node("mergeItem2"), get_node("mergeItem3"), get_node("mergeItem4"), get_node("mergeItem5"), get_node("mergeItem6"), get_node("mergeItem7"), get_node("mergeItem8"), get_node("mergeItem9"), get_node("mergeItem10"), get_node("mergeItem11"), get_node("mergeItem12")]
+@onready var mergeArray: Array[MergeItem] = [get_node("mergeItem1"), get_node("mergeItem2"),get_node("mergeItem3"), get_node("mergeItem4"), get_node("mergeItem5"), get_node("mergeItem6"), get_node("mergeItem7"), get_node("mergeItem8"), get_node("mergeItem9"), get_node("mergeItem10"), get_node("mergeItem11"), get_node("mergeItem12")]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	super()
 	
 	# Connect to MergeItems signals
 	for item in mergeArray:
@@ -12,9 +13,22 @@ func _ready() -> void:
 		item.connect("merge_failure", mergeFailure)
 		item.connect("merge_collect", mergeCollect.bind(item))
 	
-	# Fills array of MergeItems, converting from BlankItems (need to add state loading)
-	for arrayItem: MergeItem in mergeArray:
-		changeArrayItem(arrayItem)
+	# Check if there are items to load from global array
+	if (system_global.mergeItemNames[0] == "blankItem"):
+		
+		# Fills array of MergeItems, converting from BlankItems (need to add state loading)
+		for arrayItem: MergeItem in mergeArray:
+			changeArrayItem(arrayItem)
+	
+	# Otherwise, load items in
+	else:
+		for index in mergeArray.size():
+			var name: String = system_global.mergeItemNames[index]
+			mergeArray[index].itemName = name
+			
+			# If it's a level 3 item, label as such
+			if (name == "MangoLoco" || name == "MushroomCup" || name == "Delorean" || name == "HaulingSpark" || name == "SkyrimHelmet" || name == "PickleRick" || name == "LeClerc" || name == "Journal"):
+				mergeArray[index].levelThree = true
 
 # Changes given MergeItem in array to a level 1/2 item
 func changeArrayItem(item: MergeItem):
@@ -56,6 +70,9 @@ func changeArrayItem(item: MergeItem):
 		
 		# After running at least once, if a pair is found/already found, continue. otherwise, repeat
 		firstRun = true
+	
+	# Save array to global variable
+	system_global.mergeItemNames = [$mergeItem1.itemName, $mergeItem2.itemName, $mergeItem3.itemName, $mergeItem4.itemName, $mergeItem5.itemName, $mergeItem6.itemName, $mergeItem7.itemName, $mergeItem8.itemName, $mergeItem9.itemName, $mergeItem10.itemName, $mergeItem11.itemName, $mergeItem12.itemName]
 	
 	# TESTING
 	if (index == 12):
