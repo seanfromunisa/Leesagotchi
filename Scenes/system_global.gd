@@ -1,12 +1,12 @@
 extends Node
 
-var totalSeconds: int = 0
-var totalMinutes: int = 0
-var totalHours: int = 0
-var happiness: float = 80
-var food: int = 0
-var hunger: int = 100
-var mergeItemNames: Array[String] = ["blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem"]
+@export var totalSeconds: int = 0
+@export var totalMinutes: int = 0
+@export var totalHours: int = 0
+@export var happiness: float = 80
+@export var food: int = 0
+@export var hunger: int = 100
+@export var mergeItemNames: Array[String] = ["blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem"]
 var globalHighlight: MergeItem = null
 var windowHasFocus: bool = true
 
@@ -14,8 +14,12 @@ var windowHasFocus: bool = true
 func _ready() -> void:
 	
 	# Check if save data exists. If so, load data
-	var loadDataPath: String = "user://leesagotchisave.data"
-	if FileAccess.file_exists(loadDataPath):
+	var loadDataPath: String = "user://leesagotchisave.tres"
+	if ResourceLoader.exists(loadDataPath):
+		
+		# TESTING
+		print("LOADING")
+		
 		var savedGame: SavedGame = load(loadDataPath) as SavedGame
 		
 		totalSeconds = savedGame.totalSeconds
@@ -32,6 +36,10 @@ func _process(delta: float) -> void:
 
 # Saving function, called each minute and on quit
 func saveGame():
+	
+	# TESTING
+	print("SAVING")
+	
 	var savedGame: SavedGame = SavedGame.new()
 	
 	savedGame.totalSeconds = totalSeconds
@@ -42,4 +50,4 @@ func saveGame():
 	savedGame.food = food
 	savedGame.mergeItemNames = mergeItemNames
 	
-	ResourceSaver.save(savedGame, "user://leesagotchisave.data")
+	ResourceSaver.save(savedGame, "user://leesagotchisave.tres")

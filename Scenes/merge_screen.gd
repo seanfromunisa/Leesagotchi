@@ -2,6 +2,7 @@ extends "res://Scenes/main.gd"
 
 # Array of all on-screen MergeItem objects
 @onready var mergeArray: Array[MergeItem] = [get_node("mergeItem1"), get_node("mergeItem2"),get_node("mergeItem3"), get_node("mergeItem4"), get_node("mergeItem5"), get_node("mergeItem6"), get_node("mergeItem7"), get_node("mergeItem8"), get_node("mergeItem9"), get_node("mergeItem10"), get_node("mergeItem11"), get_node("mergeItem12")]
+@onready var screenAnims: AnimatedSprite2D = $screenAnims
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -48,10 +49,6 @@ func changeArrayItem(item: MergeItem):
 			
 			# Other items must also not check against the given item
 			pairFound = checkOtherPairInArray(mergeArray[index], item)
-			
-			# TESTING
-			if (pairFound == true):
-				print("merge possible")
 		
 		# Index integer increases
 		index += 1
@@ -65,18 +62,11 @@ func changeArrayItem(item: MergeItem):
 		if (checkPairInArray(item)):
 			pairFound = true
 		
-		# TESTING
-		print("did change: " + item.itemName)
-		
 		# After running at least once, if a pair is found/already found, continue. otherwise, repeat
 		firstRun = true
 	
 	# Save array to global variable
 	system_global.mergeItemNames = [$mergeItem1.itemName, $mergeItem2.itemName, $mergeItem3.itemName, $mergeItem4.itemName, $mergeItem5.itemName, $mergeItem6.itemName, $mergeItem7.itemName, $mergeItem8.itemName, $mergeItem9.itemName, $mergeItem10.itemName, $mergeItem11.itemName, $mergeItem12.itemName]
-	
-	# TESTING
-	if (index == 12):
-		print("merge made possible")
 	
 # Checks if any array items match the given item
 func checkPairInArray(item: MergeItem):
@@ -96,22 +86,25 @@ func checkOtherPairInArray(item: MergeItem, excluded: MergeItem):
 			return true
 	return false
 	
-# Visible acknowledgement for successful merge, before changing globally highlighted item
+# Change globally highlighted item
 func mergeSuccess():
-	# TESTING
 	changeArrayItem(system_global.globalHighlight)
-	print("merge success!!")
 
 # Visible acknowledgement for failed merge	
 func mergeFailure():
-	# TESTING
-	print("merge failed...")
+	
+	# Play failure animation
+	screenAnims.play("wrong")
+	await get_tree().create_timer(2)
+	screenAnims.play("none")
 	
 # Visible acknowledgement for successful collection, and added food value
 func mergeCollect(item: MergeItem):
-	# TESTING
-	print("collected " + item.itemName + "!")
-	print("merge collect! +3")
+	
+	# Play collection animation
+	screenAnims.play("collect")
+	await get_tree().create_timer(2)
+	screenAnims.play("none")
 	
 	# Collect food and change the successfully collected item
 	system_global.food += 3

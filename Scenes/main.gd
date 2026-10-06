@@ -23,6 +23,9 @@ func _on_timer_timeout() -> void:
 		system_global.totalSeconds = 0
 		system_global.totalMinutes += 1
 		
+		# TESTING
+		print("REACHED SAVE")
+		
 		# Save game each minute
 		system_global.saveGame()
 		
@@ -42,7 +45,10 @@ func _on_timer_timeout() -> void:
 			system_global.happiness -= hungerInducedUnhappiness
 		
 	if (system_global.totalSeconds % (10 * rateDueToFocus) == 0 && system_global.hunger != 0):
-		system_global.hunger -= 1
+		if (system_global.hunger - 1 < 1):
+			system_global.hunger = 1
+		else:
+			system_global.hunger -= 1
 		
 	# TESTING
 	print("happiness:")

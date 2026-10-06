@@ -4,6 +4,34 @@
 [ext_resource type="Texture2D" uid="uid://c2ii8yxh4a6vk" path="res://Illustrations/mergeScreen.png" id="2_400fq"]
 [ext_resource type="Script" uid="uid://dgw1bjnanr2ly" path="res://Scenes/merge_screen.gd" id="2_hyff1"]
 [ext_resource type="PackedScene" uid="uid://c7wa4uil3ktus" path="res://Scenes/MergeItem.tscn" id="4_hyff1"]
+[ext_resource type="Texture2D" uid="uid://dvj15n7w4lshv" path="res://Illustrations/blankscreen.png" id="5_ghy6q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sogs0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ghy6q")
+}],
+"loop": true,
+"name": &"collect",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ghy6q")
+}],
+"loop": true,
+"name": &"none",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ghy6q")
+}],
+"loop": true,
+"name": &"wrong",
+"speed": 5.0
+}]
 
 [node name="Node2D" unique_id=54053220 instance=ExtResource("1_oftjy")]
 script = ExtResource("2_hyff1")
@@ -48,3 +76,10 @@ position = Vector2(203, 416)
 
 [node name="mergeItem12" parent="." index="13" unique_id=1754888592 instance=ExtResource("4_hyff1")]
 position = Vector2(302, 416)
+
+[node name="screenAnims" type="AnimatedSprite2D" parent="." index="14" unique_id=1967629842]
+position = Vector2(200, 300.00003)
+scale = Vector2(0.19999999, 0.20000002)
+sprite_frames = SubResource("SpriteFrames_sogs0")
+animation = &"collect"
+autoplay = "none"

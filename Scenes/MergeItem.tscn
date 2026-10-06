@@ -3,9 +3,29 @@
 [ext_resource type="Script" uid="uid://f8i4nfon71k4" path="res://Scenes/MergeItem.gd" id="1_yf70l"]
 [ext_resource type="Texture2D" uid="uid://brh6bduwtayv1" path="res://Illustrations/merge/Carrot.png" id="2_4sp0s"]
 [ext_resource type="Texture2D" uid="uid://dylm2q0554031" path="res://Illustrations/merge/highlight.png" id="2_kflnw"]
+[ext_resource type="Texture2D" uid="uid://dvj15n7w4lshv" path="res://Illustrations/blankscreen.png" id="4_ptf48"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ptul"]
 size = Vector2(1.0014716, 0.99999726)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ckxjm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ptf48")
+}],
+"loop": true,
+"name": &"none",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ptf48")
+}],
+"loop": true,
+"name": &"stars",
+"speed": 5.0
+}]
 
 [node name="MergeItem" type="StaticBody2D" unique_id=1440225629]
 input_pickable = true
@@ -27,5 +47,8 @@ scale = Vector2(84.99999, 79.999985)
 shape = SubResource("RectangleShape2D_8ptul")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1075343738]
+sprite_frames = SubResource("SpriteFrames_ckxjm")
+animation = &"stars"
+autoplay = "none"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
