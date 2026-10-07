@@ -2,8 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://ds515o5j2r34a" path="res://Scenes/main.tscn" id="1_ajgim"]
 [ext_resource type="Script" uid="uid://dogfpi5llovin" path="res://Scenes/load_screen.gd" id="2_py8ui"]
+[ext_resource type="Texture2D" uid="uid://i3sge5au4lgh" path="res://Illustrations/loading.png" id="3_64a5g"]
 
 [node name="Node2D" unique_id=54053220 instance=ExtResource("1_ajgim")]
 script = ExtResource("2_py8ui")
 
 [node name="Loadscreen" type="Sprite2D" parent="." index="1" unique_id=1313280802]
+position = Vector2(200, 300)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_64a5g")

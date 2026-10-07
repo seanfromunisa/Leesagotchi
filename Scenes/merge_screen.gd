@@ -89,28 +89,34 @@ func checkOtherPairInArray(item: MergeItem, excluded: MergeItem):
 # Change globally highlighted item
 func mergeSuccess():
 	changeArrayItem(system_global.globalHighlight)
+	
+	# Add to items merged count
+	if (system_global.itemsMerged + 1 > 999999):
+		system_global.itemsMerged = 999999
+	else:
+		system_global.itemsMerged += 1
 
 # Visible acknowledgement for failed merge	
 func mergeFailure():
 	
 	# Play failure animation
 	screenAnims.play("wrong")
-	await get_tree().create_timer(2)
+	await get_tree().create_timer(1).timeout
 	screenAnims.play("none")
 	
 # Visible acknowledgement for successful collection, and added food value
 func mergeCollect(item: MergeItem):
-	
-	# Play collection animation
-	screenAnims.play("collect")
-	await get_tree().create_timer(2)
-	screenAnims.play("none")
 	
 	# Collect food and change the successfully collected item
 	system_global.food += 3
 	if (system_global.food > 99999):
 		system_global.food = 99999
 	changeArrayItem(item)
+	
+	# Play collection animation
+	screenAnims.play("collect")
+	await get_tree().create_timer(1).timeout
+	screenAnims.play("none")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

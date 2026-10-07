@@ -8,3 +8,5 @@ extends Resource
 @export var food: int
 @export var hunger: int
 @export var mergeItemNames: Array[String]
+@export var happyPointsGot: int
+@export var itemsMerged: int

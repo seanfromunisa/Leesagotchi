@@ -44,12 +44,7 @@ func _on_timer_timeout() -> void:
 	
 	# If soot is being pet
 	if (pettingSoot == true):
-		
-		# If they can be made happier
-		if (system_global.happiness + 3 > 100):
-			system_global.happiness = 100
-		else:
-			system_global.happiness += 3
+		addHappiness(3)
 
 # If the star is clicked, feed soot sprite
 func _on_food_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -59,9 +54,6 @@ func _on_food_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> 
 			# Check if enough food
 			if (system_global.food > 10):
 				system_global.food -= 10
-				sootSprite.play("eat")
-				await get_tree().create_timer(5)
-				sootSprite.play("idle")
 				
 				# If they have room for food
 				if (system_global.hunger + 2 > 100):
@@ -69,8 +61,23 @@ func _on_food_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> 
 				else: 
 					system_global.hunger += 2
 					
-				# If they can be made happier
-				if (system_global.happiness + 5 > 100):
-					system_global.happiness = 100
-				else:
-					system_global.happiness += 5
+				addHappiness(5)
+				
+				sootSprite.play("eat")
+				await get_tree().create_timer(3).timeout
+				sootSprite.play("idle")
+					
+# Add to soot happiness and to happiness total
+func addHappiness(amount: int):
+	
+	# If they can be made happier
+	if (system_global.happiness + amount > 100):
+		system_global.happiness = 100
+	else:
+		system_global.happiness += amount
+	
+	# Add to total happiness count
+	if (system_global.happyPointsGot + 1 > 999999):
+		system_global.happyPointsGot = 999999
+	else:
+		system_global.happyPointsGot += 1

@@ -2,6 +2,59 @@
 
 [ext_resource type="PackedScene" uid="uid://ds515o5j2r34a" path="res://Scenes/main.tscn" id="1_y41ik"]
 [ext_resource type="Script" uid="uid://dyfk3e4c0sgxj" path="res://Scenes/stat_screen.gd" id="2_77u83"]
+[ext_resource type="Texture2D" uid="uid://do7om01vwsdrq" path="res://Illustrations/statsScreen.png" id="3_xv0df"]
 
 [node name="Node2D" unique_id=54053220 instance=ExtResource("1_y41ik")]
 script = ExtResource("2_77u83")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1" unique_id=295099353]
+position = Vector2(200, 300)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_xv0df")
+
+[node name="time" type="Label" parent="." index="2" unique_id=1915352093]
+offset_left = 152.0
+offset_top = 130.0
+offset_right = 293.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "asd"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="happy" type="Label" parent="." index="3" unique_id=761505953]
+offset_left = 152.0
+offset_top = 205.0
+offset_right = 293.0
+offset_bottom = 245.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "asd"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="merge" type="Label" parent="." index="4" unique_id=818872421]
+offset_left = 152.0
+offset_top = 279.0
+offset_right = 293.0
+offset_bottom = 319.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "asd"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="food" type="Label" parent="." index="5" unique_id=101324383]
+offset_left = 152.0
+offset_top = 387.0
+offset_right = 293.0
+offset_bottom = 427.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "asd"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lostFocusFilter" parent="." index="6" unique_id=105977253]
+visible = false

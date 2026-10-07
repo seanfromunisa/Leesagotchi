@@ -3,7 +3,11 @@
 [ext_resource type="Script" uid="uid://f8i4nfon71k4" path="res://Scenes/MergeItem.gd" id="1_yf70l"]
 [ext_resource type="Texture2D" uid="uid://brh6bduwtayv1" path="res://Illustrations/merge/Carrot.png" id="2_4sp0s"]
 [ext_resource type="Texture2D" uid="uid://dylm2q0554031" path="res://Illustrations/merge/highlight.png" id="2_kflnw"]
-[ext_resource type="Texture2D" uid="uid://dvj15n7w4lshv" path="res://Illustrations/blankscreen.png" id="4_ptf48"]
+[ext_resource type="Texture2D" uid="uid://ciskwprghim27" path="res://Illustrations/stars/none.png" id="4_om4k1"]
+[ext_resource type="Texture2D" uid="uid://bheg35fy8uif3" path="res://Illustrations/stars/stars1.png" id="5_nvqy8"]
+[ext_resource type="Texture2D" uid="uid://cqfpxglfnpn8q" path="res://Illustrations/stars/stars2.png" id="6_n1sjq"]
+[ext_resource type="Texture2D" uid="uid://d1oukl0nky7gg" path="res://Illustrations/stars/stars3.png" id="7_j8apt"]
+[ext_resource type="Texture2D" uid="uid://buffsfm6ptagb" path="res://Illustrations/stars/stars4.png" id="8_cdmlj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ptul"]
 size = Vector2(1.0014716, 0.99999726)
@@ -12,7 +16,7 @@ size = Vector2(1.0014716, 0.99999726)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_ptf48")
+"texture": ExtResource("4_om4k1")
 }],
 "loop": true,
 "name": &"none",
@@ -20,11 +24,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_ptf48")
+"texture": ExtResource("5_nvqy8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n1sjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j8apt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cdmlj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_om4k1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_om4k1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_om4k1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_om4k1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_om4k1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_om4k1")
 }],
 "loop": true,
 "name": &"stars",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="MergeItem" type="StaticBody2D" unique_id=1440225629]
@@ -47,8 +78,10 @@ scale = Vector2(84.99999, 79.999985)
 shape = SubResource("RectangleShape2D_8ptul")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1075343738]
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ckxjm")
 animation = &"stars"
 autoplay = "none"
+frame_progress = 0.5813131
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

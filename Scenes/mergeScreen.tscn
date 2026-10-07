@@ -4,17 +4,53 @@
 [ext_resource type="Texture2D" uid="uid://c2ii8yxh4a6vk" path="res://Illustrations/mergeScreen.png" id="2_400fq"]
 [ext_resource type="Script" uid="uid://dgw1bjnanr2ly" path="res://Scenes/merge_screen.gd" id="2_hyff1"]
 [ext_resource type="PackedScene" uid="uid://c7wa4uil3ktus" path="res://Scenes/MergeItem.tscn" id="4_hyff1"]
+[ext_resource type="Texture2D" uid="uid://ud72gvmwritl" path="res://Illustrations/collect/collect1.png" id="5_dso5x"]
 [ext_resource type="Texture2D" uid="uid://dvj15n7w4lshv" path="res://Illustrations/blankscreen.png" id="5_ghy6q"]
+[ext_resource type="Texture2D" uid="uid://dcu3fbv6rmduu" path="res://Illustrations/collect/collect2.png" id="6_2f2hi"]
+[ext_resource type="Texture2D" uid="uid://bsfs6rjkqyh1k" path="res://Illustrations/collect/collect3.png" id="7_5ovy4"]
+[ext_resource type="Texture2D" uid="uid://c7f0vk6hrm5gb" path="res://Illustrations/collect/collect4.png" id="8_suirj"]
+[ext_resource type="Texture2D" uid="uid://0fh44e01sr6" path="res://Illustrations/collect/collect5.png" id="9_jbb0a"]
+[ext_resource type="Texture2D" uid="uid://3n8sp2ktxj3f" path="res://Illustrations/collect/collect6.png" id="10_rci3k"]
+[ext_resource type="Texture2D" uid="uid://txk7uqsrktsn" path="res://Illustrations/fail/fail1.png" id="12_suirj"]
+[ext_resource type="Texture2D" uid="uid://bt33hw6fqr3t2" path="res://Illustrations/fail/fail2.png" id="13_jbb0a"]
+[ext_resource type="Texture2D" uid="uid://0lcvca6s2po7" path="res://Illustrations/fail/fail3.png" id="14_rci3k"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sogs0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("5_dso5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2f2hi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5ovy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_suirj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jbb0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rci3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ghy6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ghy6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ghy6q")
+}, {
+"duration": 1.0,
 "texture": ExtResource("5_ghy6q")
 }],
 "loop": true,
 "name": &"collect",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -26,11 +62,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("12_suirj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_jbb0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_rci3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_suirj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ghy6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ghy6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ghy6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ghy6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ghy6q")
+}, {
+"duration": 1.0,
 "texture": ExtResource("5_ghy6q")
 }],
 "loop": true,
 "name": &"wrong",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="Node2D" unique_id=54053220 instance=ExtResource("1_oftjy")]

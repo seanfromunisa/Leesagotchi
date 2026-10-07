@@ -4,16 +4,68 @@
 [ext_resource type="Script" uid="uid://bu3vxblt6jdwm" path="res://Scenes/tamagotchi_screen.gd" id="2_7xd0r"]
 [ext_resource type="Texture2D" uid="uid://khct334as834" path="res://Illustrations/sootScreen.png" id="3_0e8p2"]
 [ext_resource type="Texture2D" uid="uid://nusd607rvvyq" path="res://Illustrations/emojiHappy.png" id="4_7xd0r"]
+[ext_resource type="Texture2D" uid="uid://vqhljtpbmykf" path="res://Illustrations/soot/idle1.png" id="5_0cc2s"]
+[ext_resource type="Texture2D" uid="uid://nu7ml4116thm" path="res://Illustrations/soot/eat1.png" id="5_ws1i4"]
+[ext_resource type="Texture2D" uid="uid://bt144b1a7gk5i" path="res://Illustrations/soot/eat2.png" id="6_4ku2s"]
+[ext_resource type="Texture2D" uid="uid://csoieg4pljbc0" path="res://Illustrations/soot/idle2.png" id="6_5bu3i"]
+[ext_resource type="Texture2D" uid="uid://dyhodm83yrip6" path="res://Illustrations/soot/idle3.png" id="7_7o1so"]
+[ext_resource type="Texture2D" uid="uid://c007gn2efklih" path="res://Illustrations/soot/eat3.png" id="7_qkg2e"]
+[ext_resource type="Texture2D" uid="uid://1pk1cqqgigsv" path="res://Illustrations/soot/pet1.png" id="8_rfvra"]
+[ext_resource type="Texture2D" uid="uid://drl6tx2a4uad2" path="res://Illustrations/soot/pet2.png" id="9_o1i72"]
+[ext_resource type="Texture2D" uid="uid://ct1evyylemem0" path="res://Illustrations/soot/pet3.png" id="10_5vqyl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7xd0r"]
 radius = 20.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rfvra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ws1i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4ku2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qkg2e")
+}],
+"loop": true,
+"name": &"eat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0cc2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5bu3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7o1so")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_rfvra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_o1i72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5vqyl")
+}],
+"loop": true,
+"name": &"pet",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e8p2"]
 size = Vector2(173, 150)
 
 [sub_resource type="Theme" id="Theme_7xd0r"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_7xd0r"]
 
 [node name="Node2D" unique_id=54053220 instance=ExtResource("1_22v0y")]
 script = ExtResource("2_7xd0r")
@@ -39,10 +91,14 @@ input_pickable = true
 
 [node name="SootSprite" type="AnimatedSprite2D" parent="Soot" index="0" unique_id=869747787]
 position = Vector2(200.00002, 313.00003)
-scale = Vector2(177.24998, 151.74998)
+scale = Vector2(0.2, 0.171)
+sprite_frames = SubResource("SpriteFrames_rfvra")
+animation = &"eat"
+autoplay = "idle"
+frame_progress = 0.13392404
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Soot" index="1" unique_id=541334183]
-position = Vector2(199.5, 313)
+position = Vector2(205, 332)
 shape = SubResource("RectangleShape2D_0e8p2")
 
 [node name="happiness" type="Label" parent="." index="5" unique_id=1020709916]
@@ -52,6 +108,7 @@ offset_right = 153.0
 offset_bottom = 104.0
 rotation = -0.017453292
 scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "asd"
 horizontal_alignment = 1
 
@@ -63,11 +120,8 @@ offset_bottom = 154.00006
 rotation = -0.017453292
 scale = Vector2(1.5, 1.5)
 theme = SubResource("Theme_7xd0r")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "asd"
-label_settings = SubResource("LabelSettings_7xd0r")
 horizontal_alignment = 1
 
 [node name="lostFocusFilter" parent="." index="7" unique_id=105977253]

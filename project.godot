@@ -13,7 +13,7 @@ config_version=5
 config/name="Leesagotchi"
 run/main_scene="uid://dotc5c1n2x3dl"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://c0ewq53yrmu1b"
 
 [autoload]
 

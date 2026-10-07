@@ -7,6 +7,9 @@ extends Node
 @export var food: int = 0
 @export var hunger: int = 100
 @export var mergeItemNames: Array[String] = ["blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem", "blankItem"]
+@export var happyPointsGot: int = 0
+@export var itemsMerged: int = 0
+
 var globalHighlight: MergeItem = null
 var windowHasFocus: bool = true
 
@@ -29,6 +32,8 @@ func _ready() -> void:
 		hunger = savedGame.hunger
 		food = savedGame.food
 		mergeItemNames = savedGame.mergeItemNames
+		happyPointsGot = savedGame.happyPointsGot
+		itemsMerged = savedGame.itemsMerged
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -49,5 +54,7 @@ func saveGame():
 	savedGame.hunger = hunger
 	savedGame.food = food
 	savedGame.mergeItemNames = mergeItemNames
+	savedGame.happyPointsGot = happyPointsGot
+	savedGame.itemsMerged = itemsMerged
 	
 	ResourceSaver.save(savedGame, "user://leesagotchisave.tres")

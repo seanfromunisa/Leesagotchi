@@ -97,18 +97,20 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 					self.merged()
 					merge_success.emit()
 					
+					# Unhighlight currently highlighted item
+					toggleHighlight()
+					
 					# Play celebration animation
 					celebrateAnimation.play("stars")
-					await get_tree().create_timer(2)
+					await get_tree().create_timer(1).timeout
 					celebrateAnimation.play("none")
 					
 				
 				# If not a match, show failure
 				else:
 					merge_failure.emit()
-				
-				# Unhighlight currently highlighted item regardless
-				toggleHighlight()
+					# Unhighlight currently highlighted item
+					toggleHighlight()
 				
 			# If item is level 3, change the item and collect the reward
 			elif (levelThree):
